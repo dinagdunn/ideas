@@ -1,0 +1,39 @@
+
+<h1>Hi, <%= @c_user.name %>!</h1>
+<a href="/users/delete" data-method="delete">Logout</a>
+
+<br><br><br>
+<form action="/ideas" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type ="hidden" name=idea[user_id] value = <%= @c_user.id %>>
+
+
+    <p>
+        <input type="text" name=idea[desc]>
+        <input type="submit" value="Idea!">	
+    </p>
+
+<table>
+    <tbody>
+    <% if @ideas %> 
+    <% @ideas.each do |i| %>
+    <tr>
+        <td><a href="/users/<%=i.user_id%>"><%= i.name %></a> says <%= i.desc %></td>
+        <td><form action="/likes" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type ="hidden" name=like[user_id] value = <%= @c_user.id %>>
+            <input type ="hidden" name=like[idea_id] value = <%= i.id %>>
+            <input type="submit" value="Like">
+        <!-- remember to view page source to check that your values are updating correctly-->
+        </td>
+        <td><a href="/ideas/<%=i.id%>">Person</a> Liked</td>
+    </tr>
+    <% end %>
+    <% end %>
+</tbody>
+</table>
+
+
+
+
+

@@ -1,0 +1,10 @@
+<a href="users/delete" data-method="delete">Logout</a>
+<br>
+<%= link_to "Bright Ideas", ideas_path %><br><br>
+
+<%= @poster.name %> says
+<% @total_ideas.each do |t| %>
+<%=t.tot %>
+<%end %>
+
+<h2>People who liked this post:</h2>

@@ -1,0 +1,40 @@
+<h2>Welcome!</h2>
+<form action="/users" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <p>
+        <label>Name</label>
+        <input type="text" name=user[name]>
+    </p>
+    <p>
+        <label>Alias</label>
+        <input type="text" name=user[alias>
+    </p>
+    <p>
+        <label>Email:</label>
+        <input type="text" name=user[email]>
+    </p>
+    <p>
+        <label>Password</label>
+        <input type="password" name=user[password]>
+    </p>
+    <p>
+    <label>Confirm Password:</label>
+    <input type="password" name=user[password_confirmation]>
+</p>
+    <input type="submit" name="Register">	
+</form>
+
+<!-- when we are creating a new user, we need to use user[password] for example, because people can possibly insert something malicious in our database. however, for login, we can just use "password" because we aer just checking against the database now.. and not letting the user insert anything new into the database. -->
+
+
+<br><br><h2>Login</h2>
+<form action="/users/login" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <label>Email:</label>
+        <input type="text" name="email">
+   
+        <label>Password:</label>
+        <input type="password" name="password">
+
+    <input type="submit" name="Login">	
+</form>
